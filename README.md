@@ -34,6 +34,24 @@ Your drive will be mounted at startup from now on, and to mount it immediately (
 sudo mount -av
 ```
 
+### Create an update batch file for easy updating
+
+One of the main reasons to be on Tumbleweed is to get updates constantly.  Especially when using multiple repos, updating "correctly" on Tumbleweed is not as straight forward as it might seem.  The updater in the YaST GUI shouldn't be used, and instead zypper with the "dup" command is preferred, according to [this forum post](https://forums.opensuse.org/showthread.php/528149-Updating-Tumbleweed) and [this article](https://lwn.net/Articles/717489/).  The easiest way is to create a simple batch file with these commands that you can run to update the system.  You can create it in your favorite text editor (vim!) or copy/paste these echo commands to create the file:
+
+```
+echo "sudo zypper refresh" > ~/bin/zup
+echo "sudo zypper dup --no-allow-vendor-change" >> ~/bin/zup
+echo "sudo zypper ps -s" >> ~/bin/zup
+```
+
+Then make the file executable:
+
+```
+chmod +x ~/bin/zup
+```
+
+You should now be able to type `zup` to perform your update.  If the zup command isn't recognized, then ~/bin is not in your %PATH% and you'll need to fix that.  If you just created the ~/bin folder, try restarting your shell or rebooting.
+
 ### Install codecs for playing videos & flash
 
 Use zypper to install vlc-codecs, libxine2-codecs, and flash-player.  These require the packman repository, and when installing vlc-codecs, zypper might ask you about changing vendor for a few dependencies, to which you can answer the first option (1) for each. 
