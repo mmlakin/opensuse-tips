@@ -11,6 +11,9 @@ sudo zypper addrepo -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openS
 sudo zypper dup --from packman --allow-vendor-change
 ```
 
+Also add the libdvdcss repo
+```
+
 ### Install Nvidia drivers
 
 Use [these instructions](https://en.opensuse.org/SDB:NVIDIA_drivers) to install the official Nvidia drivers for your video card.  The instructions show you how to identify the model of your card, so you can pick the right driver.  As of 2019 there are only two options; so if you have a GeForce 600 series or newer, use the G05 driver.  Here's the commands I used to install the driver for my GeForce 1070 Ti:
@@ -52,13 +55,28 @@ chmod +x ~/bin/zup
 
 You should now be able to type `zup` to perform your update.  If the zup command isn't recognized, then ~/bin is not in your %PATH% and you'll need to fix that.  If you just created the ~/bin folder, try restarting your shell or rebooting.
 
-### Install codecs for playing videos & flash
+### Install codecs for playing multimedia: 
 
-Use zypper to install vlc-codecs, libxine2-codecs, and flash-player.  These require the packman repository, and when installing vlc-codecs, zypper might ask you about changing vendor for a few dependencies, to which you can answer the first option (1) for each. 
+Follow [this post on the OpenSUSE forums][https://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweedhttps://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweed] for how to install multimedia support.
 
+You should already have the Packman repo installed from earlier, and you will also need the libdvdcss repo.  Afterwards, refresh your repos:
+
+```
+sudo zypper addrepo http://opensuse-guide.org/repo/openSUSE_Tumbleweed/ libdvdcss
+sudo zypper refresh
+```
+
+Refresh your repos, then install the needed codecs, allowing them to change repos if needed (option 1):
+```
+sudo zypper install -f libxine2-codecs ffmpeg-3  dvdauthor gstreamer-plugins-bad gstreamer-plugins-bad-orig-addon gstreamer-plugins-base  gstreamer-plugins-good gstreamer-plugins-good-extra gstreamer-plugins-libav gstreamer-plugins-qt5 gstreamer-plugins-ugly gstreamer-plugins-ugly-orig-addon vlc smplayer x264 x265 vlc-codecs vlc-codec-gstreamer ogmtools libavcodec58
+```
+
+If you feel uneasy about installing so many codecs, you can try with just these few below:
 ```
 sudo zypper install vlc-codecs, libxine2-codecs, flash-player
 ```
+
+Now, very important!  Follow the last part of the guide, where it says to open YaST > Software Management and switch system packges to the versions in the Packman repo.  YaST > Software Management > Repositories > packman > "Switch system packages" button > confirm changing to packman > Apply button.  [This picture][http://paste.opensuse.org/view//92222495] illustrates the process well.
 
 ### Install apps
 
