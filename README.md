@@ -78,6 +78,12 @@ sudo zypper install vlc-codecs, libxine2-codecs, flash-player
 
 Now, very important!  Follow the last part of the guide, where it says to open YaST > Software Management and switch system packges to the versions in the Packman repo.  YaST > Software Management > Repositories > packman > "Switch system packages" button > confirm changing to packman > Apply button.  [This picture][http://paste.opensuse.org/view//92222495] illustrates the process well.
 
+### Random KDE Desktop Tweaks
+
+Change task switcher (alt-tab) to look more like Windows:
+    System Settings - Window Management - Task Switcher - Visualization: Choose "Thumbnails" and uncheck "Show selected window"
+
+
 ### Install apps
 
 Redshift - Blue-light filter (ala Flux).  The basic redshift is a command line utility, so we want to install redshift-gtk instead.
