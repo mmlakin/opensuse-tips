@@ -54,7 +54,7 @@ You should now be able to type `zup` to perform your update.  If the zup command
 
 ### Install codecs for playing multimedia: 
 
-Follow [this post on the OpenSUSE forums][https://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweedhttps://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweed] for how to install multimedia support.
+Follow [this post on the OpenSUSE forums](https://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweedhttps://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweed) for how to install multimedia support.
 
 You should already have the Packman repo installed from earlier, and you will also need the libdvdcss repo.  Afterwards, refresh your repos:
 
@@ -73,7 +73,7 @@ If you feel uneasy about installing so many codecs, you can try with just these 
 sudo zypper install vlc-codecs, libxine2-codecs, flash-player
 ```
 
-Now, very important!  Follow the last part of the guide, where it says to open YaST > Software Management and switch system packges to the versions in the Packman repo.  YaST > Software Management > Repositories > packman > "Switch system packages" button > confirm changing to packman > Apply button.  [This picture][http://paste.opensuse.org/view//92222495] illustrates the process well.
+Now, very important!  Follow the last part of the guide, where it says to open YaST > Software Management and switch system packges to the versions in the Packman repo.  YaST > Software Management > Repositories > packman > "Switch system packages" button > confirm changing to packman > Apply button.  [This picture](http://paste.opensuse.org/view//92222495) illustrates the process well.
 
 ### Random KDE Desktop Tweaks
 
