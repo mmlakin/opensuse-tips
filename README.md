@@ -11,9 +11,6 @@ sudo zypper addrepo -cfp 90 http://ftp.gwdg.de/pub/linux/misc/packman/suse/openS
 sudo zypper dup --from packman --allow-vendor-change
 ```
 
-Also add the libdvdcss repo
-```
-
 ### Install Nvidia drivers
 
 Use [these instructions](https://en.opensuse.org/SDB:NVIDIA_drivers) to install the official Nvidia drivers for your video card.  The instructions show you how to identify the model of your card, so you can pick the right driver.  As of 2019 there are only two options; so if you have a GeForce 600 series or newer, use the G05 driver.  Here's the commands I used to install the driver for my GeForce 1070 Ti:
@@ -97,4 +94,11 @@ Shutter - Screenshot upload tool (ala ShareX).
 ```
 sudo zypper install shutter
 ```
+Albert - Better launcher (ala Alfred on OSX)
 
+```
+sudo zypper install albert
+```
+You will need to enable features in the Albert settings before they will work (otherwise you will type and nothing will happen!).  Set your keybind for Albert, and you can re-map the KDE search keybind by going to KDE System Settings - Shortcuts - Global - System Settings - Search.
+
+Also, if you want the Restart/Shutdown/Logout commands in Albert to work, you will need to change the commands in Settings - Extensions - System to use `qdbus-qt5` instead of just `qdbus`.
