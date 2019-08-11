@@ -36,7 +36,7 @@ sudo mount -av
 
 ### Create an update batch file for easy updating
 
-One of the main reasons to be on Tumbleweed is to get updates constantly.  Especially when using multiple repos, updating "correctly" on Tumbleweed is not as straight forward as it might seem.  The updater in the YaST GUI shouldn't be used, and instead zypper with the "dup" command is preferred, according to [this forum post](https://forums.opensuse.org/showthread.php/528149-Updating-Tumbleweed) and [this article](https://lwn.net/Articles/717489/).  The easiest way is to create a simple batch file with these commands that you can run to update the system.  You can create it in your favorite text editor (vim!) or copy/paste these echo commands to create the file:
+One of the main reasons to be on Tumbleweed is to get updates constantly.  Especially when using multiple repos, updating "correctly" on Tumbleweed is not as straight forward as it might seem.  The updater in the YaST GUI __should not__ be used, and instead zypper with the "dup" command is preferred, according to [this forum post](https://forums.opensuse.org/showthread.php/528149-Updating-Tumbleweed) and [this article](https://lwn.net/Articles/717489/).  The easiest way is to create a simple batch file with these commands that you can run to update the system.  You can create it in your favorite text editor (vim!) or copy/paste these echo commands to create the file (paste this into your terminal to create the file, not into a text editor):
 
 ```
 echo "sudo zypper refresh" > ~/bin/zup
@@ -56,15 +56,15 @@ You should now be able to type `zup` to perform your update.  If the zup command
 
 Follow [this post on the OpenSUSE forums](https://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweedhttps://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweed) for how to install multimedia support.
 
-You should already have the Packman repo installed from earlier, and you will also need the libdvdcss repo.  Afterwards, refresh your repos:
+You should already have the Packman repo installed from earlier, and you will also need to install the libdvdcss repo:
 
 ```
 sudo zypper addrepo http://opensuse-guide.org/repo/openSUSE_Tumbleweed/ libdvdcss
-sudo zypper refresh
 ```
 
 Refresh your repos, then install the needed codecs, allowing them to change repos if needed (option 1):
 ```
+sudo zypper refresh
 sudo zypper install -f libxine2-codecs ffmpeg-3  dvdauthor gstreamer-plugins-bad gstreamer-plugins-bad-orig-addon gstreamer-plugins-base  gstreamer-plugins-good gstreamer-plugins-good-extra gstreamer-plugins-libav gstreamer-plugins-qt5 gstreamer-plugins-ugly gstreamer-plugins-ugly-orig-addon vlc smplayer x264 x265 vlc-codecs vlc-codec-gstreamer ogmtools libavcodec58
 ```
 
@@ -89,11 +89,14 @@ Redshift - Blue-light filter (ala Flux).  The basic redshift is a command line u
 sudo zypper install redshift-gtk
 ```
 
+
 Shutter - Screenshot upload tool (ala ShareX).
 
 ```
 sudo zypper install shutter
 ```
+
+
 Albert - Better launcher (ala Alfred on OSX)
 
 ```
