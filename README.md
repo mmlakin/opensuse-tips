@@ -80,6 +80,8 @@ Now, very important!  Follow the last part of the guide, where it says to open Y
 Change task switcher (alt-tab) to look more like Windows:
     System Settings - Window Management - Task Switcher - Visualization: Choose "Thumbnails" and uncheck "Show selected window"
 
+NumLock key enabled at startup:
+    System Settings - Hardware - Input Devices - Keyboard - Hardware - NumLock on Startup - Turn on
 
 ### Install apps
 
