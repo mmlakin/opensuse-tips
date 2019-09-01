@@ -1,6 +1,6 @@
 # opensuse-tips
 
-Tips, tricks, and apps for getting started on OpenSUSE Linux after coming from Windows (at home) and Mac OSX (at work).
+Tips, tricks, and apps for getting started on openSUSE Linux after coming from Windows (at home) and Mac OSX (at work).
 
 ### Add external package repositories 
 
@@ -54,7 +54,7 @@ You should now be able to type `zup` to perform your update.  If the zup command
 
 ### Install codecs for playing multimedia: 
 
-Follow [this post on the OpenSUSE forums](https://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweedhttps://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweed) for how to install multimedia support.
+Follow [this post on the openSUSE forums](https://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweedhttps://forums.opensuse.org/showthread.php/523476-Multimedia-Guide-for-openSUSE-Tumbleweed) for how to install multimedia support.
 
 You should already have the Packman repo installed from earlier, and you will also need to install the libdvdcss repo:
 
@@ -75,6 +75,12 @@ sudo zypper install vlc-codecs, libxine2-codecs, flash-player
 
 Now, very important!  Follow the last part of the guide, where it says to open YaST > Software Management and switch system packges to the versions in the Packman repo.  YaST > Software Management > Repositories > packman > "Switch system packages" button > confirm changing to packman > Apply button.  [This picture](http://paste.opensuse.org/view//92222495) illustrates the process well.
 
+### Repair GRUB2 boot loader after Windows update
+
+If you are a dual-booting Windows 10 and openSUSE Tumbleweed, you will eventually run into this issue.  After a major update, Windows will often make changes to the partitions, causing the grub boot loader to no longer boot into your openSUSE.  You will first notice that your computer boots directly into Windows like before installing openSUSE.  Next, when you try to boot directly into openSUSE by changing the BIOS boot setting, you will get an error and boot into "grub rescue" mode.
+
+The solution for this is simple; boot from your openSUSE installation media and choose "Boot from hard disk" and select openSUSE as you normally would.  If this doesn't work, boot from USB again and select "More > Boot Linux System" and follow the prompts to boot into your openSUSE OS ([See this openSUSE support article](https://doc.opensuse.org/documentation/leap/startup/html/book.opensuse.startup/cha.trouble.html#sec.trouble.boot)).  Once you've booted into your openSUSE installation successfully, run YaST > System > Boot Loader and just click OK and it will automatically fix your grub boot loader.  Now you just need to edit the boot order in your BIOS setup to make sure the openSUSE/grub boots first instead of Windows, and you'll be back in action.  You will be able to dual boot into Windows just as before, by choosing the Windows boot loader option from the grub menu.
+ 
 ### Random KDE Desktop Tweaks
 
 Change task switcher (alt-tab) to look more like Windows:
@@ -107,3 +113,5 @@ sudo zypper install albert
 You will need to enable features in the Albert settings before they will work (otherwise you will type and nothing will happen!).  Set your keybind for Albert, and you can re-map the KDE search keybind by going to KDE System Settings - Shortcuts - Global - System Settings - Search.
 
 Also, if you want the Restart/Shutdown/Logout commands in Albert to work, you will need to change the commands in Settings - Extensions - System to use `qdbus-qt5` instead of just `qdbus`.
+
+
