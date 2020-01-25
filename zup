@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+neofetch --ascii_distro OpenSUSE --ascii_bold off --bold off --color_blocks off
+spaces="                    "
+if [[ $1 ]]; then
+  echo "\n          openSUSE Tumbleweed updates are available!"
+else
+  echo "\n          openSUSE Tumbleweed updater."
+fi
+echo "\n               Press any key to get started...\n"
+read -krs    # only works in zsh!
+sudo zypper refresh
+sudo zypper dup --no-allow-vendor-change
+sudo zypper ps -s
+echo "\nPress any key to continue.\n"
+read -krs    # only works in zsh!
