@@ -1,15 +1,26 @@
 #!/usr/bin/env zsh
+# zsh is required for the `read -krs` pause to work correctly
+
+echo; echo; echo
+
+# neofetch displays opensuse icon & system info:
 neofetch --ascii_distro OpenSUSE --ascii_bold off --bold off --color_blocks off
-spaces="                    "
+
+# Running `zup update` via KDE Notifications shows 'updates available' message:
 if [[ $1 ]]; then
   echo "\n          openSUSE Tumbleweed updates are available!"
 else
-  echo "\n          openSUSE Tumbleweed updater."
+  echo "\n             openSUSE Tumbleweed manual updater"
 fi
+
 echo "\n               Press any key to get started...\n"
 read -krs    # only works in zsh!
+
+# update via zypper; sudo requires password:
 sudo zypper refresh
 sudo zypper dup --no-allow-vendor-change
 sudo zypper ps -s
+
 echo "\nPress any key to continue.\n"
 read -krs    # only works in zsh!
+

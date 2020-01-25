@@ -34,17 +34,13 @@ Your drive will be mounted at startup from now on, and to mount it immediately (
 sudo mount -av
 ```
 
-### Create an update batch file for easy updating
+### Create an update shell script for easy updating
 
-One of the main reasons to be on Tumbleweed is to get updates constantly.  Especially when using multiple repos, updating "correctly" on Tumbleweed is not as straight forward as it might seem.  The updater in the YaST GUI __should not__ be used, and instead zypper with the "dup" command is preferred, according to [this forum post](https://forums.opensuse.org/showthread.php/528149-Updating-Tumbleweed) and [this article](https://lwn.net/Articles/717489/).  The easiest way is to create a simple batch file with these commands that you can run to update the system.  You can create it in your favorite text editor (vim!) or copy/paste these echo commands to create the file (paste this into your terminal to create the file, not into a text editor):
+One of the main reasons to be on Tumbleweed is to get updates constantly.  Especially when using multiple repos, updating "correctly" on Tumbleweed is not as straight forward as it might seem.  The updater in the YaST GUI __should not__ be used, and instead zypper with the "dup" command is preferred, according to [this forum post](https://forums.opensuse.org/showthread.php/528149-Updating-Tumbleweed) and [this article](https://lwn.net/Articles/717489/).
 
-```
-echo "sudo zypper refresh" > ~/bin/zup
-echo "sudo zypper dup --no-allow-vendor-change" >> ~/bin/zup
-echo "sudo zypper ps -s" >> ~/bin/zup
-```
+I found that creating a shell script with the proper update commands is the best way to stay updated.  You can also automate the process by using KDE Notifications to automatically launch your script when a system update is detected.  I've attached my update script to this repo and named it "zup" (short for zypper update) as it's easy to type.
 
-Then make the file executable:
+First, copy the script to somewhere in your $PATH, like ~/bin, then make the file executable:
 
 ```
 chmod +x ~/bin/zup
@@ -114,4 +110,3 @@ You will need to enable features in the Albert settings before they will work (o
 
 Also, if you want the Restart/Shutdown/Logout commands in Albert to work, you will need to change the commands in Settings - Extensions - System to use `qdbus-qt5` instead of just `qdbus`.
 
-; otherwise you will need to change it to suit your settings.
